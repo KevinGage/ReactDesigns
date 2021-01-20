@@ -8,14 +8,14 @@ function Sidebar() {
   return (
     <Nav className="bg-dark flex-column sidebar">
       <IconContext.Provider value={{ size: 24 }}>
-        <Nav.Item class="navItem">
-          <Nav.Link href="/home"><FiHome /></Nav.Link>
+        <Nav.Item>
+          <Nav.Link href="/home" active={true}><FiHome /></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/home"><FiCalendar/></Nav.Link>
+          <Nav.Link href="/calendar"><FiCalendar/></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/home">test123</Nav.Link>
+          <Nav.Link href="/test123">test123</Nav.Link>
         </Nav.Item>
       </IconContext.Provider>
     </Nav>

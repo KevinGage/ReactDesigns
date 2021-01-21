@@ -1,0 +1,6 @@
+// Get rid of default margins and paddings for everything so we can manually assign tham
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

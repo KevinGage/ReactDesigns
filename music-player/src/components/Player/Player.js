@@ -9,8 +9,8 @@ import {
 function Player({ currentSong, isPlaying, setIsPlaying }) {
   const audioRef = useRef(null);
   const [songInfo, setSongInfo] = useState({
-    currentTime: null,
-    duration: null,
+    currentTime: 0,
+    duration: 0,
   });
 
   const formatTime = (time) => {

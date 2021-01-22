@@ -1,27 +1,32 @@
-import React from "react";
-import Nav from "react-bootstrap/esm/Nav";
+import { useState } from "react";
+import MenuItem from "../MenuItem/MenuItem";
 import { IconContext } from "react-icons";
 import { FiHome, FiCalendar } from "react-icons/fi";
 
 function Sidebar() {
+  const [hover, setHover] = useState(false);
+
+  const mouseEnterHandler = () => {
+    setHover(true);
+  };
+  const mouseLeaveHandler = () => {
+    setHover(false);
+  };
+
   return (
-    <Nav className="bg-dark flex-column sidebar">
+    <div
+      onMouseEnter={mouseEnterHandler}
+      onMouseLeave={mouseLeaveHandler}
+      style={{ width: `${hover ? "255px" : "74px"}` }}
+      className={"sidebar-wrapper"}
+    >
       <IconContext.Provider value={{ size: 24 }}>
-        <Nav.Item>
-          <Nav.Link href="/home" active={true}>
-            <FiHome />
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/calendar">
-            <FiCalendar />
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/test123">test123</Nav.Link>
-        </Nav.Item>
+        <nav className={`sidebar ${hover ? "" : "sidebar-collapsed"}`}>
+          <MenuItem icon={<FiHome />} label={"Home"} active={true} />
+          <MenuItem icon={<FiCalendar />} label={"Calendar"} active={false} />
+        </nav>
       </IconContext.Provider>
-    </Nav>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import LibrarySong from "../LibrarySong/LibrarySong";
 
-function Library({ songs, setCurrentSong, audioRef, isPlaying }) {
+function Library({ songs, audioRef, isPlaying, setActiveSong }) {
   return (
     <div className="library">
       <h2>Library</h2>
@@ -9,9 +9,9 @@ function Library({ songs, setCurrentSong, audioRef, isPlaying }) {
           <LibrarySong
             key={song.id}
             song={song}
-            setCurrentSong={setCurrentSong}
             audioRef={audioRef}
             isPlaying={isPlaying}
+            setActiveSong={setActiveSong}
           />
         ))}
       </div>

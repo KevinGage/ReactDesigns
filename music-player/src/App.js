@@ -23,6 +23,25 @@ function App() {
     setSongInfo({ ...setSongInfo, duration: duration, currentTime: current });
   };
 
+  const setActiveSong = (song) => {
+    setCurrentSong(song);
+    setSongs(
+      songs.map((s) => {
+        if (s.id === song.id) {
+          return {
+            ...s,
+            active: true,
+          };
+        } else {
+          return {
+            ...s,
+            active: false,
+          };
+        }
+      })
+    );
+  };
+
   return (
     <div className="App">
       <Song currentSong={currentSong} />
@@ -36,9 +55,9 @@ function App() {
       />
       <Library
         songs={songs}
-        setCurrentSong={setCurrentSong}
         audioRef={audioRef}
         isPlaying={isPlaying}
+        setActiveSong={setActiveSong}
       />
       <audio
         ref={audioRef}

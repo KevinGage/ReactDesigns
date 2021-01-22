@@ -1,6 +1,6 @@
-function LibrarySong({ song, setCurrentSong, audioRef, isPlaying }) {
+function LibrarySong({ song, audioRef, isPlaying, setActiveSong }) {
   const songSelectHandler = () => {
-    setCurrentSong(song);
+    setActiveSong(song);
 
     // starts audio when switching songs if player is playing
     // has to use a promise to make sure song is loaded before playing
@@ -15,7 +15,10 @@ function LibrarySong({ song, setCurrentSong, audioRef, isPlaying }) {
   };
 
   return (
-    <div onClick={songSelectHandler} className="library-song">
+    <div
+      onClick={songSelectHandler}
+      className={`library-song ${song.active ? "selected" : ""}`}
+    >
       <img src={song.cover} alt={song.name} />
       <div className="song-description">
         <h3>{song.name}</h3>

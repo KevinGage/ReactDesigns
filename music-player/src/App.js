@@ -52,7 +52,7 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         currentSong={currentSong}
-        setCurrentSong={setCurrentSong}
+        setActiveSong={setActiveSong}
         audioRef={audioRef}
         songInfo={songInfo}
         setSongInfo={setSongInfo}

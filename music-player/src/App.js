@@ -36,8 +36,8 @@ function App() {
     });
   };
 
-  const setActiveSong = (song) => {
-    setCurrentSong(song);
+  const setActiveSong = async (song) => {
+    await setCurrentSong(song);
     setSongs(
       songs.map((s) => {
         if (s.id === song.id) {

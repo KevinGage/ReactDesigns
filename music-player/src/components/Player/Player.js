@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { playAudio } from "../../util";
 import {
   faPlay,
   faAngleLeft,
@@ -37,20 +36,23 @@ function Player({
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = async (direction) => {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
 
     if (direction === "skip-forward") {
-      setActiveSong(songs[(currentIndex + 1) % songs.length]);
+      await setActiveSong(songs[(currentIndex + 1) % songs.length]);
     }
     if (direction === "skip-back") {
       if (currentIndex > 0) {
-        setActiveSong(songs[currentIndex - 1]);
+        await setActiveSong(songs[currentIndex - 1]);
       } else {
-        setActiveSong(songs[songs.length - 1]);
+        await setActiveSong(songs[songs.length - 1]);
       }
     }
-    playAudio(isPlaying, audioRef);
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
   };
 
   // Add animation css for progress bar

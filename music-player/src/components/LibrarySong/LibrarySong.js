@@ -1,10 +1,10 @@
-import { playAudio } from "../../util";
-
 function LibrarySong({ song, audioRef, isPlaying, setActiveSong }) {
-  const songSelectHandler = () => {
-    setActiveSong(song);
+  const songSelectHandler = async () => {
+    await setActiveSong(song);
 
-    playAudio(isPlaying, audioRef);
+    if (isPlaying) {
+      audioRef.current.play();
+    }
   };
 
   return (

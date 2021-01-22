@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { playAudio } from "../../util";
 import {
   faPlay,
   faAngleLeft,
@@ -49,6 +50,7 @@ function Player({
         setActiveSong(songs[songs.length - 1]);
       }
     }
+    playAudio(isPlaying, audioRef);
   };
 
   return (

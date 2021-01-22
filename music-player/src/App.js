@@ -14,6 +14,7 @@ function App() {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
+    animationPercentage: 0,
   });
 
   const audioRef = useRef(null);
@@ -22,7 +23,17 @@ function App() {
     const current = e.target.currentTime;
     const duration = e.target.duration;
 
-    setSongInfo({ ...setSongInfo, duration: duration, currentTime: current });
+    //Get percentage of current position in song
+    const roundedCurrent = Math.round(current);
+    const roundedDuration = Math.round(duration);
+    const percentage = Math.round((roundedCurrent / roundedDuration) * 100);
+
+    setSongInfo({
+      ...setSongInfo,
+      duration: duration,
+      currentTime: current,
+      animationPercentage: percentage,
+    });
   };
 
   const setActiveSong = (song) => {

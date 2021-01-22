@@ -5,18 +5,58 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .time-control {
   width: 50%;
   display: flex;
+  align-items: center;
 
   input {
     width: 100%;
-    padding: 1rem 0rem;
+
+    // to customize an input bar you must completely hide it and restyle it
+    -webkit-appearance: none;
+    background: transparent;
+    &:focus {
+      outline: none;
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+    }
+    &::-moz-range-thumb {
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+    }
+
+    cursor: pointer;
   }
 
   p {
     padding: 1rem;
   }
+}
+
+.track {
+  background: lightblue;
+  width: 100%;
+  height: 1rem;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.animate-track {
+  background: rgb(204, 204, 204);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0%);
+  pointer-events: none;
 }
 
 .play-control {

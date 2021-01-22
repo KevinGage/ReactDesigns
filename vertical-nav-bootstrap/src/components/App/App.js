@@ -1,18 +1,17 @@
-import React from 'react';
-import Sidebar from '../Sidebar/Sidebar';
-import './App.css'
+import React from "react";
+import Sidebar from "../Sidebar/Sidebar";
 
 function App() {
   return (
-    <main id="main-wrapper">
+    <main class="main-wrapper">
       <section>
-        <div id="sidebar-wrapper">
+        <div class="sidebar-wrapper">
           <Sidebar />
         </div>
       </section>
       <section>
         <div id="page-content-wrapper">
-
+          <h1>Body</h1>
         </div>
       </section>
     </main>

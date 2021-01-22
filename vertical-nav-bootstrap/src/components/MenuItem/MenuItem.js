@@ -1,7 +1,9 @@
-function MenuItem({ icon, label, active }) {
+function MenuItem({ icon, label, location, active }) {
   return (
     <div className={`menu-item ${active ? "active" : ""}`}>
-      {icon} <span>{label}</span>
+      <a href={location}>
+        {icon} <span>{label}</span>
+      </a>
     </div>
   );
 }

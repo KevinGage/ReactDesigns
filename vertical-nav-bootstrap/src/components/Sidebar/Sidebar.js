@@ -22,8 +22,18 @@ function Sidebar() {
     >
       <IconContext.Provider value={{ size: 24 }}>
         <nav className={`sidebar ${hover ? "" : "sidebar-collapsed"}`}>
-          <MenuItem icon={<FiHome />} label={"Home"} active={true} />
-          <MenuItem icon={<FiCalendar />} label={"Calendar"} active={false} />
+          <MenuItem
+            icon={<FiHome />}
+            label={"Home"}
+            location={"/home"}
+            active={true}
+          />
+          <MenuItem
+            icon={<FiCalendar />}
+            label={"Calendar"}
+            location={"/calendar"}
+            active={false}
+          />
         </nav>
       </IconContext.Provider>
     </div>

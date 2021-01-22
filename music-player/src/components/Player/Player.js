@@ -64,7 +64,7 @@ function Player({
           onChange={dragHandler}
           type="range"
         />
-        <p>{formatTime(songInfo.duration)}</p>
+        <p>{songInfo.duration ? formatTime(songInfo.duration) : "0:00"}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon

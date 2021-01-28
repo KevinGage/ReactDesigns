@@ -5,24 +5,26 @@ import {
   StyledImage,
   StyledHide,
 } from "../styles.js";
+import { motion } from "framer-motion";
+import { titleAnim } from "../animation";
 
 const AboutSection = () => {
   return (
     <StyledAbout>
       <StyledDescription>
-        <div className="title">
+        <motion.div>
           <StyledHide>
-            <h2>We work to make</h2>
+            <motion.h2 variants={titleAnim}>We work to make</motion.h2>
           </StyledHide>
           <StyledHide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               your <span>dreams</span>
-            </h2>
+            </motion.h2>
           </StyledHide>
           <StyledHide>
-            <h2>come true.</h2>
+            <motion.h2 variants={titleAnim}>come true.</motion.h2>
           </StyledHide>
-        </div>
+        </motion.div>
         <p>
           Contact us for any photography or videography ideas that you have. We
           have professionals with amazing skills.

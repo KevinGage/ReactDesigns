@@ -6,7 +6,7 @@ import {
   StyledHide,
 } from "../styles.js";
 import { motion } from "framer-motion";
-import { titleAnim } from "../animation";
+import { titleAnim, fadeAnim } from "../animation";
 
 const AboutSection = () => {
   return (
@@ -25,11 +25,11 @@ const AboutSection = () => {
             <motion.h2 variants={titleAnim}>come true.</motion.h2>
           </StyledHide>
         </motion.div>
-        <p>
+        <motion.p variants={fadeAnim}>
           Contact us for any photography or videography ideas that you have. We
           have professionals with amazing skills.
-        </p>
-        <button>Contact Us</button>
+        </motion.p>
+        <motion.button variants={fadeAnim}>Contact Us</motion.button>
       </StyledDescription>
       <StyledImage>
         <img src={home1} alt="man with camera" />

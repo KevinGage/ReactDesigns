@@ -6,7 +6,7 @@ import {
   StyledHide,
 } from "../styles.js";
 import { motion } from "framer-motion";
-import { titleAnim, fadeAnim } from "../animation";
+import { titleAnim, fadeAnim, photoAnim } from "../animation";
 
 const AboutSection = () => {
   return (
@@ -32,7 +32,7 @@ const AboutSection = () => {
         <motion.button variants={fadeAnim}>Contact Us</motion.button>
       </StyledDescription>
       <StyledImage>
-        <img src={home1} alt="man with camera" />
+        <motion.img src={home1} alt="man with camera" variants={photoAnim} />
       </StyledImage>
     </StyledAbout>
   );

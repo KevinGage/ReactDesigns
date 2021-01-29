@@ -15,7 +15,12 @@ import {
   sliderAnim,
 } from "../animation";
 
+import { useScroll } from "../components/useScroll";
+
 const OurWork = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
+
   return (
     <StyledWork
       variants={pageAnimation}
@@ -23,6 +28,7 @@ const OurWork = () => {
       animate="show"
       exit="exit"
       style={{ background: "#fff" }}
+      layout="position"
     >
       <motion.div variants={sliderContainer}>
         <Frame1 variants={sliderAnim} />
@@ -39,22 +45,28 @@ const OurWork = () => {
           </StyledHide>
         </Link>
       </StyledMovie>
-      <StyledMovie>
-        <motion.h2 variants={fadeAnim}>The Racer</motion.h2>
+      <StyledMovie
+        ref={element}
+        variants={fadeAnim}
+        animate={controls}
+        initial="hidden"
+      >
+        <h2>The Racer</h2>
         <motion.div variants={lineAnim} className="line"></motion.div>
         <Link to="/work/the-racer">
-          <StyledHide>
-            <motion.img variants={photoAnim} src={theracer} alt="racer" />
-          </StyledHide>
+          <img variants={photoAnim} src={theracer} alt="racer" />
         </Link>
       </StyledMovie>
-      <StyledMovie>
-        <motion.h2 variants={fadeAnim}>Good Times</motion.h2>
+      <StyledMovie
+        ref={element2}
+        variants={fadeAnim}
+        animate={controls2}
+        initial="hidden"
+      >
+        <h2>Good Times</h2>
         <motion.div variants={lineAnim} className="line"></motion.div>
         <Link to="/work/good-times">
-          <StyledHide>
-            <motion.img variants={photoAnim} src={goodtimes} alt="good times" />
-          </StyledHide>
+          <img variants={photoAnim} src={goodtimes} alt="good times" />
         </Link>
       </StyledMovie>
     </StyledWork>
@@ -70,7 +82,7 @@ const StyledWork = styled(motion.div)`
   }
 `;
 
-const StyledMovie = styled.div`
+const StyledMovie = styled(motion.div)`
   padding-bottom: 10rem;
   .line {
     height: 0.5rem;
@@ -91,9 +103,9 @@ const StyledHide = styled.div`
 const Frame1 = styled(motion.div)`
   position: fixed;
   left: 0;
-  top: 10%;
+  top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #fffebf;
   z-index: 2;
 `;

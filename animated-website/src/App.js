@@ -4,6 +4,7 @@ import ContactUs from "./pages/ContactUs";
 import OurWork from "./pages/OurWork";
 import MovieDetail from "./pages/MovieDetail";
 import { Switch, Route, useLocation } from "react-router-dom";
+import ScrollTop from "./components/ScrollTop";
 
 //Import global style
 import GlobalStyle from "./components/GlobalStyle";
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
+      <ScrollTop />
       <Nav />
       {/* exitBeforeEnter tells framer motion to finish exit animation before starting enter animation */}
       <AnimatePresence exitBeforeEnter>

@@ -6,9 +6,18 @@ import { StyledAbout } from "../styles";
 // Allows animating if layout changes.  For example if a div is removed from screen and other divs move up
 import { AnimateSharedLayout } from "framer-motion";
 
+import { useScroll } from "./useScroll";
+import { scrollRevealAnim } from "../animation";
+
 const FaqSection = () => {
+  const [element, controls] = useScroll();
   return (
-    <StyledFaq>
+    <StyledFaq
+      variants={scrollRevealAnim}
+      ref={element}
+      animate={controls}
+      initial="hidden"
+    >
       <h2>
         Any Questions <span>FAQ</span>
       </h2>

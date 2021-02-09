@@ -4,8 +4,14 @@ import { loadGames } from "../actions/gamesAction";
 import Game from "../componenets/Game";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import GameDetail from "../componenets/GameDetail";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
+  //Get current location
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+
   //Fetch Games
   const dispatch = useDispatch();
 
@@ -18,6 +24,7 @@ const Home = () => {
 
   return (
     <StyledGameList>
+      {pathId && <GameDetail />}
       <h2>Upcoming Games</h2>
       <StyledGames>
         {upcoming.map((game) => (
@@ -26,6 +33,33 @@ const Home = () => {
             released={game.released}
             id={game.id}
             image={game.background_image}
+            screenshots={game.short_screenshots}
+            key={game.id}
+          />
+        ))}
+      </StyledGames>
+      <h2>Popular Games</h2>
+      <StyledGames>
+        {popular.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+            screenshots={game.short_screenshots}
+            key={game.id}
+          />
+        ))}
+      </StyledGames>
+      <h2>New Games</h2>
+      <StyledGames>
+        {newGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+            screenshots={game.short_screenshots}
             key={game.id}
           />
         ))}

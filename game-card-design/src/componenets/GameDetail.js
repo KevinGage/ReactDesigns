@@ -4,6 +4,14 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { smallImage } from "../util";
 
+//Images
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
+
 const GameDetail = ({ pathId }) => {
   const history = useHistory();
   //Exit Detail
@@ -19,6 +27,30 @@ const GameDetail = ({ pathId }) => {
   //Data
   const { game, screen, isLoading } = useSelector((state) => state.detail);
 
+  //Fetch correct platform icon
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "PlayStation 5":
+        return playstation;
+      case "Xbox Series S/X":
+        return xbox;
+      case "Xbox S":
+        return xbox;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
+    }
+  };
+
   return (
     <>
       {!isLoading && (
@@ -33,7 +65,11 @@ const GameDetail = ({ pathId }) => {
                 <h3>Platforms</h3>
                 <StyledPlatform>
                   {game.platforms.map((data) => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                      alt={data.platform.name}
+                    ></img>
                   ))}
                 </StyledPlatform>
               </StyledInfo>
@@ -81,7 +117,7 @@ const StyledCardShadow = styled(motion.div)`
   &::-webkit-scrollbar-track {
     background: white;
   }
-  z-index: 999;
+  z-index: 5;
 `;
 
 const StyledDetail = styled(motion.div)`
@@ -92,6 +128,7 @@ const StyledDetail = styled(motion.div)`
   position: absolute;
   left: 10%;
   color: black;
+  z-index: 10;
   img {
     width: 100%;
   }

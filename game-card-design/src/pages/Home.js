@@ -20,7 +20,9 @@ const Home = () => {
   }, [dispatch]);
 
   //Get data from redux store
-  const { popular, upcoming, newGames } = useSelector((state) => state.games);
+  const { popular, upcoming, newGames, searched } = useSelector(
+    (state) => state.games
+  );
 
   return (
     <StyledGameList>
@@ -28,6 +30,23 @@ const Home = () => {
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
         </AnimatePresence>
+        {searched.length > 0 && (
+          <div className="searched">
+            <h2>Searched Games</h2>
+            <StyledGames>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  image={game.background_image}
+                  screenshots={game.short_screenshots}
+                  key={game.id}
+                />
+              ))}
+            </StyledGames>
+          </div>
+        )}
         <h2>Upcoming Games</h2>
         <StyledGames>
           {upcoming.map((game) => (
